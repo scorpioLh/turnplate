@@ -89,32 +89,11 @@ Component({
 
   attached() {
     this.turnTableCircle()
-    this.getTurnTableData()
   },
   /**
    * 组件的方法列表
    */
   methods: {
-    /** 获取转盘数据 */
-    getTurnTableData() {
-      // activeModel.getBigTurntableData().then(res => {
-      //   if (res.code === 1) {
-      //     let imageArr = []
-      //     res.data.forEach(item => {
-      //       imageArr.push(item.img)
-      //     })
-      //     this.data.imageAward = imageArr
-      //     this.loadGame()
-      //   }
-      // })
-      this.loadGame()
-    },
-
-    /** 加载游戏界面 */
-    loadGame() {
-      
-    },
-
     /** 游戏界面圆点设置 */
     turnTableCircle() {
       let leftCircle = 7.5;
