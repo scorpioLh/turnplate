@@ -1,6 +1,8 @@
 Page({
   data: {
-    winningResults: 3,
+    winningResult: 3,
+    times: 2,
+    speed: 100,
     prizeImgs: [
       './images/money.png',
       './images/money.png',

@@ -1,6 +1,14 @@
 <!-- 微信大转盘  
   winningResult: Number 中奖结果 从左上角第一位是1开始，顺时针1 2 3 4 5 6 7 8 ,总共8个中奖号，其他数字无效
   prizeImgs: Array 中奖图片数字，从左上角第一位开始顺时针排列，如非8张图片地址组成的数组则无效
+  times: Number 转盘转的圈数，默认3圈
+  speed: Number 移动速度，毫秒为单位，默认100
   turnResultCallBack:  抽奖结束时的回调
 -->
-<v-turnplate winningResults="{{winningResults}}" prizeImgs="{{prizeImgs}}" bind:turnResultCallBack="lotteryResult" />
+<v-turnplate 
+  winningResult="{{winningResult}}"
+  rizeImgs="{{prizeImgs}}" 
+  times="{{times}}"
+  speed="{{speed}}"
+  bind:turnResultCallBack="lotteryResult" 
+/>

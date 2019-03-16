@@ -3,7 +3,8 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    winningResults: {
+    // 中奖结果
+    winningResult: {
       type: Number,
       observer(newVal) {
         if (newVal && newVal < 9 && newVal > 0 && (newVal % 1 === 0)) {
@@ -34,6 +35,23 @@ Component({
             title: '奖品图片输入错误',
             icon: 'none'
           })
+        }
+      }
+    },
+    // 转盘转的圈数
+    times: {
+      type: Number,
+      observer(newVal) {
+        if (newVal && newVal > 0) {
+          this.data.circleTimes = newVal
+        }
+      }
+    },
+    speed: {
+      type: Number,
+      observer(newVal) {
+        if (newVal && newVal > 0) {
+          this.data.circleSpeed = newVal
         }
       }
     }
@@ -84,7 +102,9 @@ Component({
     indexSelect: 0, // 渲染色块所用
     lotteryNum: 1, // 中奖号码 (1~9)
     isRunning: false, //是否正在抽奖
-    imageAward: [] //奖品图片数组
+    imageAward: [], //奖品图片数组
+    circleTimes: 3, // 轮盘转的圈数（默认3圈）
+    circleSpeed: 100 // 转圈的速度
   },
 
   attached() {
@@ -165,7 +185,7 @@ Component({
       let indexSelect = 0 // 控制色块显示位置
       let i = 0 // 计数器
       let timer = setInterval(() => {
-        if (i > this.data.lotteryNum + 24 - 2) { // 24是格子移动次数，24为移动24格，如要更改需为8的倍数
+        if (i > this.data.lotteryNum + 8 * this.data.circleTimes - 2) { // 24是格子移动次数，24为移动24格，如要更改需为8的倍数
           clearInterval(timer)
           this.setData({
             isRunning: false
@@ -179,7 +199,7 @@ Component({
           indexSelect++
           i++
         })
-      }, 100) // 100为移动速度
+      }, this.data.speed) // 100为移动速度
     }
   }
 })
